@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+    - refs/tags/*
+
+steps:
+- task: NuGetCommand@2
+  inputs:
+    command: pack
+    packagesToPack: IntelliTect.Coalesce.KnockoutJS.Template.nuspec
+    versioningScheme: byEnvVar
+    versionEnvVar: $(Build.SourceBranchName)
